@@ -14,7 +14,8 @@
     "--socket=fallback-x11",
     "--socket=wayland",
     "--filesystem=~/.local/share/icons/:rw",
-    "--filesystem=~/.local/share/themes/:rw"
+    "--filesystem=~/.local/share/themes/:rw",
+    "--filesystem=~/.local/share/wallpapers/:rw"
   ],
   "build-options": {
     "append-path": "/usr/lib/sdk/rust-stable/bin",
@@ -39,7 +40,7 @@
         {
           "type": "git",
           "url": "https://github.com/debasish-patra-1987/linuxthemestore.git",
-          "commit": "8bab28485d1b7d11e75c490c4dfd7c7496669e3b"
+          "commit": "13f921c2f9555c24abb03506e22f22f2f708d167"
         },
         "cargo-sources.json"
     ]
