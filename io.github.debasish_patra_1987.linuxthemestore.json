@@ -15,21 +15,24 @@
     "--socket=wayland",
     "--filesystem=~/.local/share/icons/:rw",
     "--filesystem=~/.local/share/themes/:rw",
-    "--filesystem=~/.local/share/wallpapers/:rw"
+    "--filesystem=~/.local/share/wallpapers/:rw",
+    "--filesystem=~/.icons/:rw",
+    "--filesystem=~/.themes/:rw",
+    "--socket=session-bus"
   ],
   "build-options": {
     "append-path": "/usr/lib/sdk/rust-stable/bin",
     "env": {
             "CARGO_HOME" : "/run/build/linuxthemestore-rust-flatpak/cargo"
-	}
+	  }
   },
   "modules": [
     {
       "name": "linuxthemestore-rust-flatpak",
     "buildsystem": "simple",
     "build-commands": [
-        "cargo --offline fetch --manifest-path Cargo.toml --verbose",
-        "cargo --offline build --release --verbose",
+        "cargo --offline fetch --manifest-path Cargo.toml",
+        "cargo --offline build --release",
         "install -Dm755 ./target/release/linuxthemestore -t /app/bin/",
         "install -Dm644 ./assets/io.github.debasish_patra_1987.linuxthemestore.metainfo.xml -t /app/share/metainfo",
         "install -Dm644 ./assets/io.github.debasish_patra_1987.linuxthemestore.svg -t /app/share/icons/hicolor/scalable/apps",
@@ -40,7 +43,7 @@
         {
           "type": "git",
           "url": "https://github.com/debasish-patra-1987/linuxthemestore.git",
-          "commit": "13f921c2f9555c24abb03506e22f22f2f708d167"
+          "commit": "dfb18368e1375d1bb0a0410f2e45800a7d115b9f"
         },
         "cargo-sources.json"
     ]
