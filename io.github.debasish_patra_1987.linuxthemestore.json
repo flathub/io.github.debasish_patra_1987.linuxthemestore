@@ -43,7 +43,7 @@
         {
           "type": "git",
           "url": "https://github.com/debasish-patra-1987/linuxthemestore.git",
-          "commit": "dfb18368e1375d1bb0a0410f2e45800a7d115b9f"
+          "commit": "b2a1fd0d6138eebba42524a1dc223b947af7ca1d"
         },
         "cargo-sources.json"
     ]
