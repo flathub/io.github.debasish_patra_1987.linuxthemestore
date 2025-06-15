@@ -16,12 +16,7 @@
     "--filesystem=~/.local/share/icons/:rw",
     "--filesystem=~/.local/share/themes/:rw",
     "--filesystem=~/.local/share/wallpapers/:rw",
-    "--talk-name=ca.desrt.dconf",
-    "--talk-name=org.freedesktop.Flatpak",
-    "--filesystem=xdg-run/dconf",
-    "--filesystem=xdg-config/dconf",
-    "--filesystem=host-os:ro",
-    "--env=GIO_EXTRA_MODULES=/app/lib/gio/modules/"
+    "--talk-name=org.freedesktop.Flatpak"
   ],
   "build-options": {
     "append-path": "/usr/lib/sdk/rust-stable/bin",
