@@ -15,21 +15,61 @@
     "--socket=wayland",
     "--filesystem=~/.local/share/icons/:rw",
     "--filesystem=~/.local/share/themes/:rw",
-    "--filesystem=~/.local/share/wallpapers/:rw"
+    "--filesystem=~/.local/share/wallpapers/:rw",
+    "--filesystem=~/.local/share/icons/:create",
+    "--filesystem=~/.local/share/themes/:create",
+    "--filesystem=~/.local/share/wallpapers/:create",
+    "--talk-name=ca.desrt.dconf",
+    "--env=GIO_EXTRA_MODULES=/app/lib/gio/modules/"
   ],
   "build-options": {
     "append-path": "/usr/lib/sdk/rust-stable/bin",
     "env": {
             "CARGO_HOME" : "/run/build/linuxthemestore-rust-flatpak/cargo"
-	}
+	  }
   },
-  "modules": [
+  "modules": [        {
+            "name": "dconf",
+            "buildsystem": "meson",
+            "config-opts": [
+                "-Dbash_completion=false",
+                "-Dman=false"
+            ],
+            "cleanup": [
+                "/include",
+                "/lib/pkgconfig",
+                "/libexec",
+                "/share/dbus-1"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://download.gnome.org/sources/dconf/0.40/dconf-0.40.0.tar.xz",
+                    "sha256": "cf7f22a4c9200421d8d3325c5c1b8b93a36843650c9f95d6451e20f0bcb24533"
+                },
+                {
+                    "type": "patch",
+                    "path": "dconf-override.patch"
+                }
+            ]
+        },
+        {
+	      "name": "libportal",
+	      "buildsystem": "meson",
+	      "sources": [
+		{
+		  "type": "git",
+		  "url": "https://github.com/flatpak/libportal.git",
+		  "tag": "0.9.1"
+		}
+	      ]
+	},
     {
       "name": "linuxthemestore-rust-flatpak",
     "buildsystem": "simple",
     "build-commands": [
-        "cargo --offline fetch --manifest-path Cargo.toml --verbose",
-        "cargo --offline build --release --verbose",
+        "cargo --offline fetch --manifest-path Cargo.toml",
+        "cargo --offline build --release",
         "install -Dm755 ./target/release/linuxthemestore -t /app/bin/",
         "install -Dm644 ./assets/io.github.debasish_patra_1987.linuxthemestore.metainfo.xml -t /app/share/metainfo",
         "install -Dm644 ./assets/io.github.debasish_patra_1987.linuxthemestore.svg -t /app/share/icons/hicolor/scalable/apps",
@@ -40,7 +80,7 @@
         {
           "type": "git",
           "url": "https://github.com/debasish-patra-1987/linuxthemestore.git",
-          "commit": "13f921c2f9555c24abb03506e22f22f2f708d167"
+          "commit": "e5050a62ae33ba9950186307825cfe86a5985558"
         },
         "cargo-sources.json"
     ]
