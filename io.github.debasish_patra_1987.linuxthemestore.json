@@ -74,13 +74,14 @@
         "install -Dm644 ./assets/io.github.debasish_patra_1987.linuxthemestore.metainfo.xml -t /app/share/metainfo",
         "install -Dm644 ./assets/io.github.debasish_patra_1987.linuxthemestore.svg -t /app/share/icons/hicolor/scalable/apps",
         "mv ./assets/io.github.debasish_patra_1987.linuxthemestore.in ./assets/io.github.debasish_patra_1987.linuxthemestore.desktop",
-        "desktop-file-install --dir=/app/share/applications ./assets/io.github.debasish_patra_1987.linuxthemestore.desktop"
+        "desktop-file-install --dir=/app/share/applications ./assets/io.github.debasish_patra_1987.linuxthemestore.desktop",
+        "cargo clean"
     ],
     "sources": [
         {
           "type": "git",
           "url": "https://github.com/debasish-patra-1987/linuxthemestore.git",
-          "commit": "46818ef6e0378afcd6f510a472b751a5651a989f"
+          "commit": "c11a603fcf73985f62ffc5a2e87580fb7ec8b803"
         },
         "cargo-sources.json"
     ]
