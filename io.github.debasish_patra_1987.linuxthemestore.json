@@ -1,7 +1,7 @@
 {
   "id": "io.github.debasish_patra_1987.linuxthemestore",
   "runtime": "org.gnome.Platform",
-  "runtime-version": "48",
+  "runtime-version": "50",
   "sdk": "org.gnome.Sdk",
   "sdk-extensions": [
     "org.freedesktop.Sdk.Extension.rust-stable"
@@ -29,30 +29,26 @@
 	  }
   },
   "modules": [        {
-            "name": "dconf",
-            "buildsystem": "meson",
-            "config-opts": [
-                "-Dbash_completion=false",
-                "-Dman=false"
-            ],
-            "cleanup": [
-                "/include",
-                "/lib/pkgconfig",
-                "/libexec",
-                "/share/dbus-1"
-            ],
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://download.gnome.org/sources/dconf/0.40/dconf-0.40.0.tar.xz",
-                    "sha256": "cf7f22a4c9200421d8d3325c5c1b8b93a36843650c9f95d6451e20f0bcb24533"
-                },
-                {
-                    "type": "patch",
-                    "path": "dconf-override.patch"
-                }
-            ]
-        },
+      "name": "dconf",
+      "buildsystem": "meson",
+      "config-opts": [
+        "-Dbash_completion=false",
+        "-Dman=false"
+      ],
+      "cleanup": [
+        "/include",
+        "/lib/pkgconfig",
+        "/libexec",
+        "/share/dbus-1"
+      ],
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://download.gnome.org/sources/dconf/0.49/dconf-0.49.0.tar.xz",
+          "sha256": "16a47e49a58156dbb96578e1708325299e4c19eea9be128d5bd12fd0963d6c36"
+        }
+      ]
+    },
         {
 	      "name": "libportal",
 	      "buildsystem": "meson",
@@ -73,15 +69,13 @@
         "install -Dm755 ./target/release/linuxthemestore -t /app/bin/",
         "install -Dm644 ./assets/io.github.debasish_patra_1987.linuxthemestore.metainfo.xml -t /app/share/metainfo",
         "install -Dm644 ./assets/io.github.debasish_patra_1987.linuxthemestore.svg -t /app/share/icons/hicolor/scalable/apps",
-        "mv ./assets/io.github.debasish_patra_1987.linuxthemestore.in ./assets/io.github.debasish_patra_1987.linuxthemestore.desktop",
-        "desktop-file-install --dir=/app/share/applications ./assets/io.github.debasish_patra_1987.linuxthemestore.desktop",
-        "cargo clean"
+        "desktop-file-install --dir=/app/share/applications ./assets/io.github.debasish_patra_1987.linuxthemestore.desktop"
     ],
     "sources": [
         {
           "type": "git",
-          "url": "https://github.com/debasish-patra-1987/linuxthemestore.git",
-          "commit": "c11a603fcf73985f62ffc5a2e87580fb7ec8b803"
+          "url": "https://github.com/sugarycandybar/linuxthemestore.git",
+          "commit": "8a825572814466315887738120a88cd80576a61b"
         },
         "cargo-sources.json"
     ]
